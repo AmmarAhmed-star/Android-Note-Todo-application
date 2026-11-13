@@ -1,6 +1,6 @@
 # Notes + To-Do App - Android
 
-Notes likho, tasks complete karo.
+Write Notes, complete Tasks.
 
 ## Features
 - Notes Grid, Pin, Priority, Search, To-Do with progress
