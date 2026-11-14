@@ -1,0 +1,9 @@
+/* Android Note Todo Application */
+body{margin:0;background:#fefce8;font-family:sans-serif}
+.header{background:#facc15;padding:20px;text-align:center;font-weight:800;font-size:1.4rem}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px;padding:20px}
+.note{background:#fef08a;padding:18px;border-radius:4px;box-shadow:4px 4px 12px rgba(0,0,0,.1);min-height:160px;transform:rotate(-.5deg)}
+.note:nth-child(2n){background:#bfdbfe;transform:rotate(.5deg)}
+.note:nth-child(3n){background:#bbf7d0;transform:rotate(-1deg)}
+.note textarea{width:100%;height:100px;background:transparent;border:none;outline:none;resize:none;font-family:inherit}
+.delete{float:right;background:#ef4444;color:#fff;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer}
