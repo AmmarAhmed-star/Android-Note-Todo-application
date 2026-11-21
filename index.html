@@ -1,5 +1,61 @@
-<!DOCTYPE html><html><head><link rel="stylesheet" href="notes-todo.css">
-<meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Notes + To-Do 📝 - Ammar Ahmed</title>
-</head><body>
-<div class='hero'><div style='font-size:52px'>📝</div><h1>Notes + To-Do 📝</h1><p>By Ammar Ahmed | Live on GitHub Pages | Made with ❤️</p><div><span class='pill'>🔥 LIVE</span><span class='pill'>⭐ 4.8 Rating</span><span class='pill'>🚀 2026</span></div></div>
-<div class='wrap'><div class='card'><h2>🌈 My Notes</h2><input id='nt' placeholder='Note title'><textarea id='nd' placeholder='Write note...'></textarea><button onclick='addN()'>Add Note +</button><div id='notes'></div><h3>✅ To-Do</h3><input id='td' placeholder='New task'><button class='green' onclick='addT()'>Add Task</button><ul id='todos'></ul></div></div><script>let notes=[],todos=['Buy groceries','Study DSA'];function addN(){let t=document.getElementById('nt').value;if(!t)return;notes.push(t);document.getElementById('notes').innerHTML=notes.map(n=>`<div style='background:#fff9c4;padding:10px;border-radius:12px;margin:5px;display:inline-block'>📌 ${n}</div>`).join('');}function addT(){let v=document.getElementById('td').value;if(!v)return;todos.push(v);renderT();}function renderT(){document.getElementById('todos').innerHTML=todos.map((t,i)=>`<li>${t} <button onclick='todos.splice(${i},1);renderT()'>Done ✅</button></li>`).join('');}renderT();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Note Todo - Dark Premium | Ammar Ahmed</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#0C0A14;color:#EDE9FE;overflow-x:hidden}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(18,14,28,.92);backdrop-filter:blur(16px);position:sticky;top:0;box-shadow:0 2px 20px rgba(124,58,237,.18);z-index:10;border-bottom:1px solid #2A1F4A}
+.logo{font-weight:900;font-size:22px;color:#fff}.logo span{color:#8B5CF6}.live{background:linear-gradient(90deg,#7C3AED,#8B5CF6);color:#fff;padding:7px 14px;border-radius:999px;font-size:12px;font-weight:900;box-shadow:0 0 18px rgba(124,58,237,.5)}
+.hero{max-width:1120px;margin:0 auto;padding:52px 22px 18px;text-align:center;position:relative}
+.hero:before{content:'';position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:800px;height:420px;background:radial-gradient(45% 60% at 50% 25%,rgba(124,58,237,.20),rgba(139,92,246,.08),rgba(0,0,0,0));pointer-events:none}
+.hero h1{font-size:50px;line-height:.90;margin:12px 0;font-weight:900;letter-spacing:-1px;color:#fff}.hero h1 span{background:linear-gradient(90deg,#8B5CF6,#A78BFA,#C4B5FD);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(124,58,237,.35)}
+.hero p{color:#94A3B8;max-width:760px;margin:0 auto;line-height:1.7;font-size:15.5px}
+.pill{display:inline-block;background:rgba(255,255,255,.06);border:1px solid rgba(124,58,237,.22);padding:8px 14px;border-radius:999px;margin:6px 4px;font-size:13px;font-weight:700;color:#C4B5FD;backdrop-filter:blur(8px)}
+.wrap{max-width:1120px;margin:0 auto;padding:18px 22px 44px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(124,58,237,.18);border-radius:22px;padding:22px;margin:16px 0;box-shadow:0 12px 32px rgba(0,0,0,.45),0 0 0 1px rgba(124,58,237,.08) inset;backdrop-filter:blur(12px)}
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}
+.tab{border:1px solid rgba(124,58,237,.22);background:rgba(255,255,255,.04);padding:11px 18px;border-radius:999px;cursor:pointer;font-weight:800;font-size:13px;transition:.25s;color:#94A3B8}.tab:hover{box-shadow:0 0 18px rgba(124,58,237,.22);color:#fff}.tab.active{background:linear-gradient(90deg,#7C3AED,#8B5CF6);color:#fff;border-color:#8B5CF6;box-shadow:0 0 22px rgba(124,58,237,.5)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(124,58,237,.18);border-radius:18px;padding:18px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}.stat b{font-size:24px;display:block;color:#fff}.stat span{font-size:12px;color:#64748B;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.feat{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px}.feat b{color:#fff}.feat p{color:#94A3B8}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+input,select{padding:12px 16px;border:1px solid rgba(124,58,237,.22);border-radius:12px;font-size:14px;background:rgba(0,0,0,.35);color:#EDE9FE}
+button{padding:12px 20px;border:0;border-radius:999px;font-weight:900;cursor:pointer;transition:.25s;font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.4)}button:hover{transform:translateY(-1px)}button.purple{background:linear-gradient(90deg,#7C3AED,#8B5CF6);color:#fff;box-shadow:0 0 18px rgba(124,58,237,.45)}button.secondary{background:rgba(255,255,255,.08);color:#EDE9FE;border:1px solid rgba(255,255,255,.12)}
+.chip{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin:5px;cursor:pointer;font-weight:700;font-size:13px;color:#94A3B8}.chip.on{background:linear-gradient(90deg,#7C3AED,#8B5CF6);color:#fff;border-color:#8B5CF6;box-shadow:0 0 14px rgba(124,58,237,.45)}
+.list-box{background:rgba(0,0,0,.25);border:1px solid rgba(124,58,237,.14);border-radius:14px;padding:16px}
+.small{color:#94A3B8;line-height:1.7;font-size:13px}
+.todo-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;background:rgba(255,255,255,.04);margin:6px 0;border-radius:10px;color:#EDE9FE}
+.todo-row.done{opacity:.55;text-decoration:line-through}
+.bar{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#7C3AED,#8B5CF6);box-shadow:0 0 10px rgba(124,58,237,.6)}
+.footer{text-align:center;padding:24px;color:#475569;font-size:13px}
+@media(max-width:700px){.hero h1{font-size:34px}.stats,.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="topnav"><div class="logo">📝 Note<span>Todo</span> <span style="font-size:12px;color:#64748B;font-weight:600">• Dark Premium • Ammar Ahmed</span></div><div class="live">● DARK PREMIUM</div></div>
+<div class="hero"><div class="pill">✦ Dark Premium • Purple Neon • Startup Feel</div><h1>Don't Forget.<br><span>Just Note & Do.</span></h1><p><b>Dark Premium Theme</b> — Black + Purple Neon — Most attractive, modern, saves battery, looks premium for portfolio.</p><div><span class="pill">🌙 Dark Mode</span><span class="pill">💜 Purple Neon</span><span class="pill">✨ Premium</span></div></div>
+<div class="wrap">
+<div class="card">
+<div class="tabs" id="tabs"><button class="tab active" type="button" data-tab="overview">📊 Overview</button><button class="tab" type="button" data-tab="demo">🧪 Demo</button><button class="tab" type="button" data-tab="languages">💻 Languages</button></div>
+<div id="panel-overview" style="display:block"><h3 style="margin:0;color:#fff">📊 Dark Overview</h3><p class="small">Neon purple glow + dark glass cards + blurred navbar — most attractive theme.</p><div class="stats" style="margin-top:14px"><div class="stat"><b id="totalTasks">0</b><span>Total</span></div><div class="stat"><b id="doneTasks">0</b><span>Done</span></div><div class="stat"><b id="pendingTasks">0</b><span>Pending</span></div><div class="stat"><b id="progress">0%</b><span>Progress</span></div></div><div class="list-box" style="margin-top:14px"><b style="color:#fff">Progress — Neon Purple</b><div class="bar" style="margin-top:10px"><i id="progressBar" style="width:0%"></i></div><p class="small" id="progressText">0 / 0 done</p></div></div>
+<div id="panel-demo" style="display:none"><h3 style="margin:0;color:#fff">🧪 Dark Demo — High Visibility Buttons</h3><p class="small">Buttons are dark purple with neon glow — 100% visible on dark background.</p><div class="controls"><input id="todoTitle" placeholder="Task e.g. Buy milk"><select id="todoPriority"><option>🔴 High</option><option>🟡 Medium</option><option>🟢 Low</option></select><button type="button" class="purple" onclick="addTodo()">➕ Add Task</button><button type="button" class="secondary" onclick="clearTodos()">🗑️ Clear All</button></div><div class="list-box"><div id="todoList"><p class="small">No tasks yet.</p></div></div></div>
+<div id="panel-languages" style="display:none"><h3 style="margin:0;color:#fff">💻 6 Languages + Dark CSS Tricks</h3><p class="small">Kotlin 58% • Java 18% • XML 16% • Gradle 5% • SQLite 3% • HTML/CSS/JS — Dark theme uses: background #0C0A14, backdrop-filter blur 16px, neon shadow 0 0 18px rgba(124,58,237,.5)</p></div>
+</div>
+</div>
+<div class="footer">Dark Premium • Purple Neon Glow • By Ammar Ahmed</div>
+<script>
+var todos=[];var curFilter='All';
+window.switchTab=function(tab){document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===tab)});document.querySelectorAll('[id^="panel-"]').forEach(function(el){el.style.display=(el.id==='panel-'+tab)?'block':'none'})};
+function renderTodos(){var total=todos.length;var done=todos.filter(function(t){return t.done}).length;var pct=total?Math.round(done/total*100):0;document.getElementById('totalTasks').innerText=total;document.getElementById('doneTasks').innerText=done;document.getElementById('pendingTasks').innerText=total-done;document.getElementById('progress').innerText=pct+'%';document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').innerText=done+' / '+total+' done ('+pct+'%)';var list=document.getElementById('todoList');if(!todos.length)list.innerHTML='<p class="small">No tasks yet.</p>';else list.innerHTML=todos.map(function(t,i){return '<div class="todo-row '+(t.done?'done':'')+'" onclick="toggleTodo('+i+')"><span>'+(t.done?'✅ ':'⬜ ')+t.title+'</span><span>'+t.priority+'</span></div>'}).join('');localStorage.setItem('todo_demo',JSON.stringify(todos))}
+function addTodo(){var title=document.getElementById('todoTitle').value.trim();var pri=document.getElementById('todoPriority').value;if(!title){alert('Enter task');return}todos.unshift({title:title,priority:pri,done:false});document.getElementById('todoTitle').value='';renderTodos()}
+function toggleTodo(i){todos[i].done=!todos[i].done;renderTodos()}
+function clearTodos(){if(!confirm('Clear all?'))return;todos=[];renderTodos()}
+try{todos=JSON.parse(localStorage.getItem('todo_demo')||'[]')}catch(e){todos=[]}
+renderTodos();
+document.querySelectorAll('.tab').forEach(function(btn){btn.addEventListener('click',function(ev){ev.preventDefault();var t=btn.getAttribute('data-tab');if(t)window.switchTab(t)})});
+</script>
+</body>
+</html>
